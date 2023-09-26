@@ -82,7 +82,7 @@ pub fn get_color(char: char) -> Option<(u8, u8, u8)> {
 pub fn numbers_to_letter(r: u8, g: u8, b: u8) -> Option<char> {
     let color_map: HashMap<(u8, u8, u8), char> = [
         ((204, 180, 194), 'a'),
-        ((255, 155, 255), 'A'),
+        ((255, 255, 255), 'A'),
         ((197, 186, 201), 'b'),
         ((221, 206, 212), 'B'),
         ((181, 185, 193), 'c'),
@@ -297,6 +297,9 @@ pub fn decode_image_and_extract_text(encoded_image: &str) -> Option<String> {
             extracted_text.push(c);
         }
     }
+
+    let first_char = extracted_text.remove(0);
+    extracted_text.push(first_char);
 
     Some(extracted_text)
 }
